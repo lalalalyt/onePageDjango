@@ -51,7 +51,13 @@ def login(request):
     else:
         return render(request, 'login.html')
 
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
+
 def counter(request):
-    text = request.POST['text']
-    length = len(text.split())
-    return render(request, 'counter.html', {'amount': length})
+    posts = [1,2,3,4,5,'tim','tom','john']
+    return render(request, 'counter.html', {'posts': posts})
+
+def post(request, pk):
+    return render(request, 'post.html', {'pk': pk})
